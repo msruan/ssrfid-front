@@ -66,7 +66,7 @@ export interface Employee {
   role: string;
 }
 
-interface CreateEmployeeDTO {
+export interface CreateEmployeeDTO {
   username: string;
   role: string;
   password: string;
