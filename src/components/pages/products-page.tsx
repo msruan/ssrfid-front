@@ -1,5 +1,9 @@
+// low-code: v0 made
+
+"use client";
+
+import { ProductList } from "@/components/products/product-list";
 import type { Product } from "@/types";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 
 interface PageProps {
   products: Product[];
@@ -7,19 +11,10 @@ interface PageProps {
 
 export function ProductsPage(props: PageProps) {
   return (
-    <main className="flex flex-col items-center pt-8">
-      <Card className="w-1/3">
-        <CardHeader>
-          <CardTitle className="text-center">Produtos</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <ul>
-            {props.products.map((p) => (
-              <li key={p.id}>{p.nome}</li>
-            ))}
-          </ul>
-        </CardContent>
-      </Card>
+    <main className="max-w-6xl px-6 py-8 mx-auto">
+      <div className="p-8 border rounded-lg bg-card border-border">
+        <ProductList products={props.products} />
+      </div>
     </main>
   );
 }

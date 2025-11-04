@@ -35,6 +35,7 @@
   // Auto fix with ESLint on save
   "editor.codeActionsOnSave": {
     "source.addMissingImports": "explicit",
+    "source.organizeImports.biome": "explicit",
     "source.fixAll.eslint": "explicit"
   }
 }

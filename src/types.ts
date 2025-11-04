@@ -1,3 +1,9 @@
+export interface APIErrorDTO {
+  detail: string;
+}
+
+/* --------------------------------- PRODUCT -------------------------------- */
+
 export interface Product {
   id: number;
   nome: string;
@@ -25,9 +31,10 @@ export interface GetProductDTO {
 
 /* -------------------------------- INVENTORY ------------------------------- */
 
-type InventoryStatus = "iniciada" | "finalizada" | "cancelada";
+export type InventoryStatus = "iniciada" | "finalizada" | "cancelada";
 
 export interface InventorySummary {
+  // And InventoryDetails
   id: number;
   status: InventoryStatus;
   employeeUsername: string;
@@ -70,4 +77,22 @@ export interface CreateEmployeeDTO {
   username: string;
   role: string;
   password: string;
+}
+
+/* ---------------------------------- AUTH ---------------------------------- */
+
+export interface LoginRequestDTO {
+  username: string;
+  password: string;
+}
+
+export interface LoginResponseDTO {
+  access_token: string;
+  token_type: string;
+}
+
+export interface CreateUserResponseDTO {
+  id: number;
+  username: string;
+  role: string;
 }
