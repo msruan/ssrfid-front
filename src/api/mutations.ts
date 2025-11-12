@@ -1,8 +1,9 @@
 "use server";
 
-import { CookiesManager } from "@/cookies";
-import { env } from "@/env/client";
+import { DEFAULT_HEADERS } from "@/constants";
+import { env } from "@/env/server";
 import type { APIErrorDTO, LoginRequestDTO, LoginResponseDTO } from "@/types";
+import { AuthCookies } from "./cookies";
 
 export async function loginAction(
   credentials: LoginRequestDTO,
@@ -13,10 +14,11 @@ export async function loginAction(
     formData.append(key, value);
   }
 
-  const res = await fetch(`${env.NEXT_PUBLIC_SSRFID_API_URL}/auth/login`, {
+  const res = await fetch(`${env.INTERNAL_SSRFID_API_URL}/auth/login`, {
     body: formData.toString(),
     method: "POST",
     headers: {
+      ...DEFAULT_HEADERS,
       "Content-Type": "application/x-www-form-urlencoded",
     },
   });
@@ -28,11 +30,11 @@ export async function loginAction(
 
   const body: LoginResponseDTO = await res.json();
 
-  await CookiesManager.authToken.set(body.access_token);
+  await AuthCookies.setToken(body);
 
   return { message: "Logado com sucesso! Redirecionando...", success: true };
 }
 
-export async function logoutAction(){
-  await CookiesManager.authToken.delete()
+export async function logoutAction() {
+  await AuthCookies.deleteToken();
 }

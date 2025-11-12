@@ -20,3 +20,8 @@ export const AppRoutes = {
   login: "/autenticacao/login",
   products: "/produtos",
 } satisfies AppRoutesDefinition;
+
+export const DEFAULT_HEADERS = {
+  "Accept-Language": "pt-BR" as const,
+  "Content-Type": "application/json" as const,
+};

@@ -57,7 +57,7 @@ function InventoriesListCard(props: CardProps) {
         </CardTitle>
       </CardHeader>
 
-      <CardContent>
+      <div className="px-3 sm:px-6">
         {props.inventories.length > 0 ? (
           <ul className="space-y-3 sm:space-y-4">
             {props.inventories.map((inv) => (
@@ -120,7 +120,7 @@ function InventoriesListCard(props: CardProps) {
             </Pagination>
           </CardFooter>
         )} */}
-      </CardContent>
+      </div>
     </Card>
   );
 }

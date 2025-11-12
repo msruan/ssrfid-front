@@ -5,7 +5,7 @@ import type { Route } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { logoutAction } from "@/api/actions";
+import { logoutAction } from "@/api/mutations";
 import { AppRoutes, Assets } from "@/constants";
 import { cn } from "@/utils";
 import { Button } from "./ui/button";

@@ -2,6 +2,12 @@ export interface APIErrorDTO {
   detail: string;
 }
 
+export enum RequestStatus {
+  PENDING,
+  ERROR,
+  SUCCESS
+}
+
 /* --------------------------------- PRODUCT -------------------------------- */
 
 export interface Product {

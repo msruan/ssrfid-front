@@ -31,9 +31,9 @@ export function ProductList({ products }: { products: Product[] }) {
           </div>
           <div>
             <h2 className="text-2xl font-semibold text-gray-900">
-              Produtos Cadastrados
+              Produtos <span className="hidden sm:inline">Cadastrados</span>
             </h2>
-            <p className="text-gray-600">
+            <p className="text-gray-600 hidden sm:block">
               Lista de produtos no inventário RFID
             </p>
           </div>

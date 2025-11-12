@@ -1,14 +1,23 @@
+"use server";
+
+import type { ApplicationException } from "@/exceptions";
 import type {
   GetAllInventoryDTO,
   GetProductDTO,
   InventorySummary,
   Product,
 } from "@/types";
-import { apiFetch } from "./config";
+import { fetchWithAuth } from "./fetch-with-auth";
 
-export async function getProducts(): Promise<Product[]> {
-  const path = "/pecas/";
-  const body = await apiFetch<GetProductDTO[]>(path);
+export async function getProducts(): Promise<Product[] | ApplicationException> {
+  const endpoint = "/pecas/";
+  const res = await fetchWithAuth(endpoint);
+
+  if (!(res instanceof Response)) {
+    return res;
+  }
+
+  const body: GetProductDTO[] = await res.json();
 
   const parse = (p: GetProductDTO): Product => {
     return {
@@ -23,9 +32,17 @@ export async function getProducts(): Promise<Product[]> {
   return body.map(parse);
 }
 
-export async function getInventories(): Promise<InventorySummary[]> {
-  const path = "/conferencia/";
-  const body = await apiFetch<GetAllInventoryDTO[]>(path);
+export async function getInventories(): Promise<
+  InventorySummary[] | ApplicationException
+> {
+  const endpoint = "/conferencia/";
+  const res = await fetchWithAuth(endpoint);
+
+  if (!(res instanceof Response)) {
+    return res;
+  }
+
+  const body: GetAllInventoryDTO[] = await res.json();
 
   const parse = (i: GetAllInventoryDTO): InventorySummary => {
     return {
