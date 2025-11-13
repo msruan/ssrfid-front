@@ -3,12 +3,12 @@
 import { AlertCircleIcon, Loader } from "lucide-react";
 import { Alert, AlertTitle } from "@/components/ui/alert";
 import { employeesFixture } from "@/fixtures";
-import { useInventories } from "@/hooks/use-inventories";
+import { useFetchInventories } from "@/hooks/use-fetch-inventories";
 import { RequestStatus } from "@/types";
 import { cn } from "@/utils";
 import { EmployeeForm } from "../employee-registration";
 import { EmployeesCard } from "../employees-card";
-import { InventoriesCards } from "../inventories-cards";
+import { InventoriesCards } from "../inventories-cards/inventories-cards";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
 
 const PageTabs = {
@@ -17,7 +17,7 @@ const PageTabs = {
 };
 
 export function HomePage() {
-  const { requestStatus, inventories } = useInventories();
+  const { requestStatus, inventories } = useFetchInventories();
 
   return (
     <main className="flex-1 w-full max-w-7xl mx-auto max-sm:px-1 flex flex-col sm:flex-row pt-8 gap-8 *:gap-4 pb-2">

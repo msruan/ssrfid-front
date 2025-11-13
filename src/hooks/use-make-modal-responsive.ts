@@ -25,7 +25,7 @@ interface ResponsiveModalComponents {
   Footer: typeof DialogFooter | typeof DrawerFooter;
 }
 
-export function useResponsiveModal(): ResponsiveModalComponents {
+export function useMakeModalResponsive(): ResponsiveModalComponents {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   const componentSet = isDesktop

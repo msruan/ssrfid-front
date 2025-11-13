@@ -97,3 +97,8 @@
   - CRUD de funcionários _(aguardando backend)_
   - Melhorar experiência mobile e completar CRUD no módulo de Produtos _(baixa prioridade)_
   - Adicionar uma cobertura mínima de testes _(desejável)_
+
+
+## 👀 OBS:
+
+- Onde você ver object instanceof Error, deveria ser object instanceof ApplicationException (para pegar os tipos ExternalAPIException e NetworkFetchException), mas por algum motivo retorna false sempre.

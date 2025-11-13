@@ -1,31 +1,33 @@
 import { useEffect, useState } from "react";
-import { getInventories } from "@/api/queries";
-import { type InventorySummary, RequestStatus } from "@/types";
+import { getProducts } from "@/api/queries";
+import { type Product, RequestStatus } from "@/types";
 
-interface UseInventoriesReturn {
-  inventories: InventorySummary[];
+interface UseProductsReturn {
+  products: Product[];
   requestStatus: RequestStatus;
 }
 
-export function useInventories(): UseInventoriesReturn {
+export function useFetchProducts(): UseProductsReturn {
   const [requestStatus, setRequestStatus] = useState(RequestStatus.PENDING);
-  const [inventories, setInventories] = useState<InventorySummary[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
 
   useEffect(() => {
     async function attemptFetch() {
-      const data = await getInventories();
+      const data = await getProducts();
+
       if (data instanceof Error) {
         setRequestStatus(RequestStatus.ERROR);
       } else {
-        setInventories(data);
+        setProducts(data);
         setRequestStatus(RequestStatus.SUCCESS);
       }
     }
+
     attemptFetch();
   }, []);
 
   return {
-    inventories,
+    products,
     requestStatus,
   };
 }

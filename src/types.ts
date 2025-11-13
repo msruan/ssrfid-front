@@ -3,17 +3,26 @@ export interface APIErrorDTO {
 }
 
 export enum RequestStatus {
+  IDLE,
   PENDING,
   ERROR,
-  SUCCESS
+  SUCCESS,
 }
 
 /* --------------------------------- PRODUCT -------------------------------- */
 
 export interface Product {
   id: number;
+  name: string;
+  productCode: string;
+  description: string;
+  location: string;
+}
+
+export interface GetProductDTO {
+  id: number;
   nome: string;
-  codigoProduto: string;
+  codigo_produto: string;
   descricao: string;
   localizacao: string;
 }
@@ -27,20 +36,11 @@ export interface CreateProductDTO {
 
 export interface UpdateProductDTO extends CreateProductDTO {}
 
-export interface GetProductDTO {
-  id: number;
-  nome: string;
-  codigo_produto: string;
-  descricao: string;
-  localizacao: string;
-}
-
 /* -------------------------------- INVENTORY ------------------------------- */
 
 export type InventoryStatus = "iniciada" | "finalizada" | "cancelada";
 
 export interface InventorySummary {
-  // And InventoryDetails
   id: number;
   status: InventoryStatus;
   employeeUsername: string;
@@ -52,6 +52,23 @@ export interface GetAllInventoryDTO {
   username_funcionario: string;
 }
 
+export interface InventoryDetails extends InventorySummary {
+  readings: Reading[];
+  events: Event[];
+}
+
+export interface GetByIdInventoryDTO extends GetAllInventoryDTO {
+  leituras: ReadingDTO[];
+  eventos: EventDTO[];
+}
+
+interface Reading {
+  id: number;
+  productCode: string;
+  lastReadTimestamp: Date;
+  quantity: number;
+}
+
 interface ReadingDTO {
   id: number;
   codigo_produto: string;
@@ -59,30 +76,18 @@ interface ReadingDTO {
   quantidade: number;
 }
 
+interface Event {
+  id: number;
+  type: string;
+  description: string;
+  occurredAt: Date;
+}
+
 interface EventDTO {
   id: number;
   tipo: string;
   descricao: string;
   ocorreu_em: string;
-}
-
-export interface GetByIdInventoryDTO {
-  id: number;
-  status: InventoryStatus;
-  username_funcionario: string;
-  leituras: ReadingDTO[];
-  eventos: EventDTO[];
-}
-
-export interface Employee {
-  username: string;
-  role: string;
-}
-
-export interface CreateEmployeeDTO {
-  username: string;
-  role: string;
-  password: string;
 }
 
 /* ---------------------------------- AUTH ---------------------------------- */
@@ -101,4 +106,15 @@ export interface CreateUserResponseDTO {
   id: number;
   username: string;
   role: string;
+}
+
+export interface Employee {
+  username: string;
+  role: string;
+}
+
+export interface CreateEmployeeDTO {
+  username: string;
+  role: string;
+  password: string;
 }

@@ -18,8 +18,8 @@ export function ProductList({ products }: { products: Product[] }) {
 
   const filteredProducts = products.filter(
     (product) =>
-      product.nome.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      product.codigoProduto.toLowerCase().includes(searchTerm.toLowerCase()),
+      product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      product.productCode.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
   return (
@@ -83,23 +83,23 @@ export function ProductList({ products }: { products: Product[] }) {
                 >
                   <div className="flex items-start justify-between mb-2">
                     <h3 className="font-semibold text-card-foreground">
-                      {product.nome}
+                      {product.name}
                     </h3>
                     <Badge
                       variant="secondary"
                       className="bg-secondary text-secondary-foreground"
                     >
-                      {product.codigoProduto}
+                      {product.productCode}
                     </Badge>
                   </div>
 
                   <p className="mb-3 text-sm leading-relaxed text-muted-foreground">
-                    {product.descricao}
+                    {product.description}
                   </p>
 
                   <div className="flex items-center gap-1 text-sm text-muted-foreground">
                     <MapPin className="w-3 h-3" />
-                    {product.localizacao}
+                    {product.location}
                   </div>
                 </div>
               ))}

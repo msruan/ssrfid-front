@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import type { ReactNode } from "react";
 import { useForm } from "react-hook-form";
 import z from "zod";
-import { useResponsiveModal } from "@/hooks/use-responsive-modal";
+import { useMakeModalResponsive } from "@/hooks/use-make-modal-responsive";
 import { cn } from "@/utils";
 import { Button } from "./ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
@@ -87,7 +87,7 @@ export function EmployeeForm({ className }: { className?: string }) {
 }
 
 export function EmployeeFormModal({ children }: { children: ReactNode }) {
-  const Modal = useResponsiveModal();
+  const Modal = useMakeModalResponsive();
 
   return (
     <Modal.Root>

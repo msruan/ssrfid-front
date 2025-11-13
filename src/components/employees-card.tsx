@@ -1,4 +1,4 @@
-import { AlertCircleIcon, UserCircle } from "lucide-react"
+import { AlertCircleIcon, UserCircle } from "lucide-react";
 import type { Employee } from "@/types";
 import { type ClassNameProp, cn } from "@/utils";
 import { Alert, AlertTitle } from "./ui/alert";

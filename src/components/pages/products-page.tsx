@@ -2,12 +2,12 @@
 
 import { AlertCircleIcon, Loader } from "lucide-react";
 import { ProductList } from "@/components/products/product-list";
-import { useProducts } from "@/hooks/use-products";
+import { useFetchProducts } from "@/hooks/use-fetch-products";
 import { RequestStatus } from "@/types";
 import { Alert, AlertTitle } from "../ui/alert";
 
 export function ProductsPage() {
-  const { requestStatus, products } = useProducts();
+  const { requestStatus, products } = useFetchProducts();
 
   return (
     <main className="max-w-6xl px-2.5 sm:px-6 py-8 mx-auto">
