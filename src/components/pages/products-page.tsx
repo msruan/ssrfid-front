@@ -6,7 +6,7 @@ import { useFetchProducts } from "@/hooks/use-fetch-products";
 import { RequestStatus } from "@/types";
 import { Alert, AlertTitle } from "../ui/alert";
 
-export function ProductsPage() {
+export default function ProductsPage() {
   const { requestStatus, products } = useFetchProducts();
 
   return (

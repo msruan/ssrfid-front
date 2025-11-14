@@ -79,7 +79,7 @@ export function InventoryDetailsCard(props: Props) {
             Inventário nº {props.selectedInventory?.id}
           </DrawerTitle>
         </DrawerHeader>
-        <div className={cn("p-4", !hasContent && "pb-20")}>
+        <div className={cn("p-4", !hasContent && "pb-60")}>
           <InventoryDetailsContent {...props} />
         </div>
       </DrawerContent>

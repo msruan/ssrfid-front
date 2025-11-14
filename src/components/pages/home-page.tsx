@@ -16,7 +16,7 @@ const PageTabs = {
   employees: "Funcionários",
 };
 
-export function HomePage() {
+export default function HomePage() {
   const { requestStatus, inventories } = useFetchInventories();
 
   return (

@@ -1,7 +1,6 @@
 "use client";
 
 import { zodResolver } from "@hookform/resolvers/zod";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -16,12 +15,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import {
-  Field,
-  FieldDescription,
-  FieldGroup,
-  FieldLabel,
-} from "@/components/ui/field";
+import { Field, FieldGroup, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { AppRoutes } from "@/constants";
 import { cn } from "@/utils";
@@ -75,7 +69,7 @@ export function LoginForm({
 
   return (
     <div className={cn("flex flex-col gap-6", className)} {...props}>
-      <Card>
+      <Card className="">
         <CardHeader className="text-center">
           <CardTitle className="text-xl">Bem vindo</CardTitle>
           <CardDescription>
@@ -99,12 +93,12 @@ export function LoginForm({
               <Field>
                 <div className="flex items-center">
                   <FieldLabel htmlFor="password">Senha</FieldLabel>
-                  <Link
+                  {/* <Link
                     href="#"
                     className="ml-auto text-sm underline-offset-4 hover:underline"
                   >
                     Esqueceu sua senha?
-                  </Link>
+                  </Link> */}
                 </div>
                 <Input
                   id="password"
@@ -121,9 +115,19 @@ export function LoginForm({
                 >
                   {isSubmitting ? "Entrando..." : "Entrar"}
                 </Button>
-                <FieldDescription className="text-center">
-                  Não tem uma conta? <Link href="#">Criar</Link>
-                </FieldDescription>
+                <div className="text-center text-sm text-muted-foreground">
+                  Não tem uma conta?
+                  <p>
+                    Por favor, entre em{" "}
+                    <a
+                      className="underline"
+                      href="mailto:smartstock.newland@gmail.com.br?subject=Acesso ao SMART STOCK"
+                    >
+                      contato
+                    </a>{" "}
+                    com a equipe de TI.
+                  </p>
+                </div>
               </Field>
             </FieldGroup>
           </form>
